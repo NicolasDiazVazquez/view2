@@ -1,11 +1,34 @@
 <?xml version="1.0" encoding="utf-8"?>
 <androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="#FF0000"
+    android:background="#FFFFFF"
     android:orientation="vertical"
     android:id="@+id/layout1">
-    <!-- Inserta aqui el codi XML del teu Layout -->
 
-    <!-- Final del codi XML del teu Layout -->
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:gravity="center_horizontal">
+        <ToggleButton
+            android:id="@+id/tbtn_opcio1"
+            android:layout_width="100dp"
+            android:layout_height="100dp"
+            android:background="@drawable/tbtn_selector"
+            android:textOff=""
+            android:textOn=""
+            tools:ignore="MissingConstraints" />
+
+        <ToggleButton
+            android:id="@+id/tbtn_opcio2"
+            android:layout_width="100dp"
+            android:layout_height="100dp"
+            android:layout_below="@+id/tbtn_opcio1"
+            android:background="@drawable/tbtn_selector2"
+            android:textOff=""
+            android:textOn=""
+            tools:ignore="MissingConstraints" />
+    </RelativeLayout>
 </androidx.constraintlayout.widget.ConstraintLayout>

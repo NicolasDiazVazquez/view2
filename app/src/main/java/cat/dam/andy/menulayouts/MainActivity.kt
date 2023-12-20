@@ -1,9 +1,11 @@
 package cat.dam.andy.menulayouts
 
+import android.annotation.SuppressLint
 import android.os.Bundle
 import android.view.LayoutInflater
+import android.widget.Toast
+import android.widget.ToggleButton
 import androidx.activity.ComponentActivity
-import androidx.activity.compose.setContent
 import androidx.compose.foundation.background
 import androidx.compose.foundation.layout.*
 import androidx.compose.foundation.shape.RoundedCornerShape
@@ -18,21 +20,44 @@ import androidx.compose.ui.platform.LocalContext
 import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.viewinterop.AndroidView
-import cat.dam.andy.menulayouts.ui.theme.AppTheme
 
 class MainActivity : ComponentActivity() {
     // Enumeració per als diferents identificadors de disseny
     enum class LayoutId { LAYOUT1, LAYOUT2, LAYOUT3, LAYOUT4 }
 
+    private lateinit var tbtn_1: ToggleButton
+    private lateinit var tbtn_2: ToggleButton
+
+    @SuppressLint("MissingInflatedId")
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        setContent {
-            // Aplicació de l'estil temàtic de l'aplicació
-            AppTheme {
-                // Funció principal de Compose
-                MyComposeApp()
-            }
+        setContentView(R.layout.activity_main)
+        title = "Exemple ToggleButton"
+
+        tbtn_1 = findViewById(R.id.tbtn_opcio1)
+        tbtn_2 = findViewById(R.id.tbtn_opcio2)
+
+
+        tbtn_1.setOnClickListener {
+            val estat_tbtn_1 = if (tbtn_1.isChecked)
+                tbtn_1.textOn.toString() else tbtn_1.textOff.toString()
+            Toast.makeText(
+                applicationContext,
+                "ToggleButton 1: $estat_tbtn_1\n",
+            Toast.LENGTH_LONG
+            ).show()
         }
+
+        tbtn_2.setOnClickListener {
+            val estat_tbtn_2 = if (tbtn_2.isChecked)
+                tbtn_2.textOn.toString() else tbtn_2.textOff.toString()
+            Toast.makeText(
+                applicationContext,
+                "ToggleButton 2: $estat_tbtn_2\n",
+                Toast.LENGTH_LONG
+            ).show()
+        }
+
     }
 
     @Composable
